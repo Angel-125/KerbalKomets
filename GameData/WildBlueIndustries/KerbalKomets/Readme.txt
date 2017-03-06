@@ -9,6 +9,13 @@ Community Resource Pack is optional; if installed, your komets will have other r
 
 ---REVISION HISTORY---
 
+0.2.0
+- You're guaranteed at least one komet being created when you install the mod or start a new game.
+- You can adjust the komet discovery chance, enable/disable auto-tracking of discovered komets, and enable/disable sending a press release for discovered komets through the GameSettings->Difficulty->Kerbal Komets screen.
+- If enabled (it is by default), you'll receive a press release upon discovering a new komet.
+- If enabled (it is by default), the Tracking Station will automatically track newly discovered komets.
+- Added more debugging information.
+
 0.1.0
 - Initial release
 

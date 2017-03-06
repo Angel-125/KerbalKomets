@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KerbalKometScenario.cs" />
+    <Compile Include="KerbalKometSettings.cs" />
     <Compile Include="KometManager.cs" />
     <Compile Include="ModuleKomet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

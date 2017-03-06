@@ -11,6 +11,7 @@ namespace KerbalKomets
         public static KerbalKometScenario Instance;
 
         protected List<string> registeredKomets = new List<string>();
+        protected bool startingKometsCreated;
 
         public override void OnAwake()
         {
@@ -25,6 +26,9 @@ namespace KerbalKomets
 
             for (int index = 0; index < komets.Length; index++)
                 registeredKomets.Add(komets[index]);
+
+            if (node.HasValue("startingKometsCreated"))
+                startingKometsCreated = bool.Parse(node.GetValue("startingKometsCreated"));
         }
 
         public override void OnSave(ConfigNode node)
@@ -32,6 +36,18 @@ namespace KerbalKomets
             base.OnSave(node);
             foreach (string komet in registeredKomets)
                 node.AddValue("KOMET", komet);
+
+            node.AddValue("startingKometsCreated", startingKometsCreated);
+        }
+
+        public bool GetStartingKometsFlag()
+        {
+            return startingKometsCreated;
+        }
+
+        public void SetStartingKometsFlag(bool created)
+        {
+            startingKometsCreated = created;
         }
 
         public bool IsKometRegistered(string vesselName)

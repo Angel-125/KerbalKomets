@@ -192,7 +192,7 @@ namespace KerbalKomets
 
         protected void setKometName()
         {
-            string prefix = "Kmt.: ";
+            string prefix = "Kmt. ";
 
             AsteroidName = CreateKometName(Planetarium.GetUniversalTime());
             this.part.vessel.vesselName = prefix + AsteroidName;
