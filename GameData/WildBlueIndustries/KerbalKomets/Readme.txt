@@ -9,12 +9,18 @@ Community Resource Pack is optional; if installed, your komets will have other r
 
 ---REVISION HISTORY---
 
-0.2.0
-- You're guaranteed at least one komet being created when you install the mod or start a new game.
-- You can adjust the komet discovery chance, enable/disable auto-tracking of discovered komets, and enable/disable sending a press release for discovered komets through the GameSettings->Difficulty->Kerbal Komets screen.
-- If enabled (it is by default), you'll receive a press release upon discovering a new komet.
-- If enabled (it is by default), the Tracking Station will automatically track newly discovered komets.
-- Added more debugging information.
+0.3.5
+- Existing asteroids won't change shape when you install or uninstall the mod.
+NOTE: If you've installed Kerbal Komets before, and visited an asteroid/komet, then its size and shape will change, but that will be the last time it does so.
+
+- Reduced chances of spawning a komet.
+- Komets now spawn with Kopernicus installed.
+- If you manually flip an asteroid to a komet, its orbit will remain unchanged.
+- Re-labeled the "Rename Asteroid" button to "Rename Komet" when the asteroid becomes a komet.
+
+0.3.0
+- Lowered default pressenceChance to discover komets to 1.
+- Randomized the position in the orbit of newly discovered komets.
 
 0.1.0
 - Initial release

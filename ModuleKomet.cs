@@ -5,6 +5,7 @@ using System.Text;
 using UnityEngine;
 using KSP.IO;
 using KSP.UI.Screens;
+using KSP.UI.Screens.Flight.Dialogs;
 
 /*
 Source code copyrighgt 2017, by Michael Billard (Angel-125)
@@ -20,8 +21,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 namespace KerbalKomets
 {
-    public class ModuleKomet : ModuleAsteroid
+    public class ModuleKomet : PartModule
     {
+        const string kRenameAsteroid = "Rename Asteroid";
+        const string kRenameKomet = "Rename Komet";
+
         [KSPField]
         public bool debugMode;
 
@@ -55,13 +59,39 @@ namespace KerbalKomets
         [KSPField]
         public double kometMaxAltitude;
 
+        [KSPField]
+        public float scienceValueRecover = 90.0f;
+
+        [KSPField]
+        public float scienceXmitScalar = 0.3f;
+
         [KSPField(isPersistant = true)]
         public bool isAKomet;
 
         [KSPField(isPersistant = true)]
         public bool resourcesConverted;
 
+        [KSPField(isPersistant = true)]
+        public bool sampleAcquired;
+
         protected Transform tailTransform = null;
+        protected ModuleAsteroid asteroid = null;
+
+        [KSPEvent(guiName = "Take Komet Sample", guiActiveUnfocused = true, externalToEVAOnly = true, unfocusedRange = 64f)]
+        public void TakeKometSample()
+        {
+            ScienceExperiment experiment = ResearchAndDevelopment.GetExperiment(kometExperimentID);
+            ScienceSubject subject = ResearchAndDevelopment.GetExperimentSubject(experiment, ScienceUtil.GetExperimentSituation(part.vessel),
+                part.vessel.mainBody, string.Empty);
+
+            //Create science data.
+            ScienceData data = new ScienceData(experiment.baseValue, scienceXmitScalar, 1f, subject.id, subject.title);
+
+            //Show results
+            ScienceLabSearch labSearch = new ScienceLabSearch(this.part.vessel, data);
+            ExperimentResultDialogPage page = new ExperimentResultDialogPage(part, data, data.baseTransmitValue, data.transmitBonus, false, "", true, labSearch, resetExperiment, keepResults, null, null);
+            ExperimentsResultDialog dlg = ExperimentsResultDialog.DisplayResult(page);
+        }
 
         [KSPEvent(guiActive = true, guiName = "Turn Into Komet")]
         public void ToggleKomet()
@@ -69,24 +99,14 @@ namespace KerbalKomets
             isAKomet = !isAKomet;
 
             SetupAsKomet(isAKomet);
-
-            //Do some things that are needed when you manually flip an asteroid.
-            if (isAKomet)
-            {
-                //Setup orbit
-                setupOrbit();
-
-                //Rename asteroid to komet
-                setKometName();
-            }
         }
 
         public override void OnStart(StartState state)
         {
-            if (isAKomet)
-                sampleExperimentId = kometExperimentID;
-
             base.OnStart(state);
+
+            //Get the ModuleAsteroid
+            asteroid = this.part.FindModuleImplementing<ModuleAsteroid>();
 
             //Get the tail transform
             if (string.IsNullOrEmpty(tailTransformName) == false)
@@ -140,8 +160,30 @@ namespace KerbalKomets
 
             if (isAKomet)
             {
+                //Hide asteroid sample event
+                if (asteroid != null)
+                {
+                    asteroid.Events["TakeSampleEVAEvent"].active = false;
+                    Events["RenameAsteroidEvent"].guiName = kRenameKomet;
+                }
+
+                //Show komet sample event if we haven't taken a sample yet.
+                if (sampleAcquired == false)
+                {
+                    Debug.Log("[ModuleKomet] - Komet hasn't been sampled, enabling sampling experiment...");
+                    Events["TakeKometSample"].active = true;
+                }
+
                 //Setup resources
                 setupResources();
+            }
+
+            else //Asteroid specific stuff
+            {
+                if (asteroid != null)
+                {
+                    Events["RenameAsteroidEvent"].guiName = kRenameAsteroid;
+                }
             }
         }
 
@@ -179,6 +221,25 @@ namespace KerbalKomets
             }
         }
 
+        protected void resetExperiment(ScienceData data)
+        {
+        }
+
+        protected void keepResults(ScienceData data)
+        {
+            //Give data to the kerbal on EVA
+            if (FlightGlobals.ActiveVessel.isEVA)
+            {
+                ModuleScienceContainer container = FlightGlobals.ActiveVessel.FindPartModuleImplementing<ModuleScienceContainer>();
+
+                if (container != null)
+                    container.AddData(data);
+
+                Events["TakeKometSample"].active = false;
+                sampleAcquired = true;
+            }
+        }
+        
         protected void setupOrbit()
         {
             Orbit orbit = Orbit.CreateRandomOrbitAround(Planetarium.fetch.Sun, kometMinAltitude, kometMaxAltitude);
@@ -192,18 +253,20 @@ namespace KerbalKomets
 
         protected void setKometName()
         {
+            if (asteroid == null)
+                return;
             string prefix = "Kmt. ";
 
-            AsteroidName = CreateKometName(Planetarium.GetUniversalTime());
-            this.part.vessel.vesselName = prefix + AsteroidName;
-            this.part.initialVesselName = prefix + AsteroidName;
-            this.part.partInfo.title = prefix + AsteroidName;
+            asteroid.AsteroidName = CreateKometName(Planetarium.GetUniversalTime());
+            this.part.vessel.vesselName = prefix + asteroid.AsteroidName;
+            this.part.initialVesselName = prefix + asteroid.AsteroidName;
+            this.part.partInfo.title = prefix + asteroid.AsteroidName;
 
             //Dirty the GUI
             if (this.part.vessel.loaded)
                 MonoUtilities.RefreshContextWindows(this.part);
 
-            Debug.Log("[ModuleKomet] - New komet designation: " + AsteroidName);
+            Debug.Log("[ModuleKomet] - New komet designation: " + asteroid.AsteroidName);
         }
 
         protected void setupResources()

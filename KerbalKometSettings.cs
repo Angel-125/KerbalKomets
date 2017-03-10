@@ -27,7 +27,7 @@ namespace KerbalKomets
         public bool sendPressRelease = true;
 
         [GameParameters.CustomIntParameterUI("Komet discovery chance", maxValue = 100, minValue = 1, stepSize = 1, toolTip = "How frequently will komets be discovered?", autoPersistance = true)]
-        public int presenceChance = 3;
+        public int presenceChance = 1;
 
         #region
         public static int PresenceChance

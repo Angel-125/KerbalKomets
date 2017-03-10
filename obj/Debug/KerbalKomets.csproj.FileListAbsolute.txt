@@ -10,6 +10,6 @@ C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\Mono.Cecil.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\TDx.TDxInput.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\Mono.Security.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.xml
-C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.csprojResolveAssemblyReference.cache
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.pdb
+C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.csprojResolveAssemblyReference.cache

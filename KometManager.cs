@@ -50,6 +50,7 @@ namespace KerbalKomets
         public void Start()
         {
             GameEvents.onAsteroidSpawned.Add(OnAsteroidSpawned);
+            GameEvents.onVesselCreate.Add(OnAsteroidSpawned);
             GameEvents.onVesselDestroy.Add(OnVesselDestroyed);
 
             ConfigNode node = GameDatabase.Instance.GetConfigNode("KERBALKOMETS");
@@ -79,6 +80,7 @@ namespace KerbalKomets
         {
             GameEvents.onAsteroidSpawned.Remove(OnAsteroidSpawned);
             GameEvents.onVesselDestroy.Remove(OnVesselDestroyed);
+            GameEvents.onVesselCreate.Remove(OnAsteroidSpawned);
         }
 
         public void OnVesselDestroyed(Vessel doomed)
@@ -88,16 +90,23 @@ namespace KerbalKomets
 
         public void OnAsteroidSpawned(Vessel asteroid)
         {
+            if (asteroid.vesselType != VesselType.SpaceObject)
+                return;
             //Just in case there were no asteroids spawned when the save was first created, let's make sure we create our starting komets.
             if (createdStartingKomets())
                 return;
 
             int presenceChance = KerbalKometSettings.PresenceChance;
-            int roll = UnityEngine.Random.Range(1, 100);
+            //Roll 3d6 to approximate a bell curve, then convert it to a value between 1 and 100.
+            float roll = 0.0f;
+            roll = UnityEngine.Random.Range(1, 6);
+            roll += UnityEngine.Random.Range(1, 6);
+            roll += UnityEngine.Random.Range(1, 6);
+            roll *= 5.5556f;
             Debug.Log("[KometManager] - Rolled a " + roll + " to see if the asteroid is a komet. presenceChance: " + presenceChance);
 
             //If we roll high enough, then flip the asteroid into a komet.
-            if (roll >= presenceChance)
+            if (roll >= (float)presenceChance)
             {
                 ConvertToKomet(asteroid);
             }
@@ -152,11 +161,11 @@ namespace KerbalKomets
                 resultsMessage.AppendLine(" ");
                 resultsMessage.AppendLine("We currently know very little about the komet, other than the following:");
                 resultsMessage.AppendLine(" ");
+                resultsMessage.AppendLine("Discovered: " + KSPUtil.dateTimeFormatter.PrintDateCompact(komet.DiscoveryInfo.lastObservedTime, false, false));
                 resultsMessage.AppendLine("Orbiting: " + komet.orbit.referenceBody.name);
-                resultsMessage.AppendLine("Last Observed: " + KSPUtil.dateTimeFormatter.PrintDateCompact(komet.DiscoveryInfo.lastObservedTime, false, false));
-                resultsMessage.AppendLine(komet.DiscoveryInfo.signalStrengthPercent.OneLiner);
                 resultsMessage.AppendLine("Size Category: " + DiscoveryInfo.GetSizeClassSizes(komet.DiscoveryInfo.objectSize));
                 resultsMessage.AppendLine("Orbital Period: " + KSPUtil.PrintTimeLong(komet.orbit.period));
+                resultsMessage.AppendLine(komet.DiscoveryInfo.signalStrengthPercent.OneLiner);
 
                 msg = new MessageSystem.Message(kometNameItems[1] + "'s Komet Discovered!", resultsMessage.ToString(),
                     MessageSystemButton.MessageButtonColor.GREEN, MessageSystemButton.ButtonIcons.ACHIEVE);
