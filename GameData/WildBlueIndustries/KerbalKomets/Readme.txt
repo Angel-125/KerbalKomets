@@ -18,10 +18,6 @@ NOTE: If you've installed Kerbal Komets before, and visited an asteroid/komet, t
 - If you manually flip an asteroid to a komet, its orbit will remain unchanged.
 - Re-labeled the "Rename Asteroid" button to "Rename Komet" when the asteroid becomes a komet.
 
-0.3.0
-- Lowered default pressenceChance to discover komets to 1.
-- Randomized the position in the orbit of newly discovered komets.
-
 0.1.0
 - Initial release
 
