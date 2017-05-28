@@ -82,7 +82,7 @@ namespace KerbalKomets
         {
             ScienceExperiment experiment = ResearchAndDevelopment.GetExperiment(kometExperimentID);
             ScienceSubject subject = ResearchAndDevelopment.GetExperimentSubject(experiment, ScienceUtil.GetExperimentSituation(part.vessel),
-                part.vessel.mainBody, string.Empty);
+                part.vessel.mainBody, string.Empty, string.Empty);
 
             //Create science data.
             ScienceData data = new ScienceData(experiment.baseValue, scienceXmitScalar, 1f, subject.id, subject.title);

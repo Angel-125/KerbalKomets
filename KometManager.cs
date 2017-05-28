@@ -27,6 +27,8 @@ namespace KerbalKomets
         //Lets you do things like manually turn an asteroid into a komet.
         public bool debugMode;
 
+        public bool loggingEnabled = false;
+
         //Eccentricity modifiers for when the asteroid is a komet.
         //Komets are highly eccentric.
         public float eccentricityMin = 0.7f;
@@ -40,7 +42,13 @@ namespace KerbalKomets
 
         //Percent chance that, when starting a new save or using the mod for the first time in an existing save,
         //that an existing asteroid will become a komet. You're guaranteed at least one.
-        public int startingKometsChance = 30;
+        public int startingKometsChance = 3;
+
+        public void Log(string message)
+        {
+            if (loggingEnabled)
+                Debug.Log("[KometManager] - " + message);
+        }
 
         public void Awake()
         {
@@ -95,25 +103,24 @@ namespace KerbalKomets
             //Just in case there were no asteroids spawned when the save was first created, let's make sure we create our starting komets.
             if (createdStartingKomets())
                 return;
+            //Max komets reached
+//            if (KerbalKometScenario.Instance.GetKometCount() >= KerbalKometSettings.MaxKomets)
+//                return;
 
             int presenceChance = KerbalKometSettings.PresenceChance;
-            //Roll 3d6 to approximate a bell curve, then convert it to a value between 1 and 100.
             float roll = 0.0f;
-            roll = UnityEngine.Random.Range(1, 6);
-            roll += UnityEngine.Random.Range(1, 6);
-            roll += UnityEngine.Random.Range(1, 6);
-            roll *= 5.5556f;
-            Debug.Log("[KometManager] - Rolled a " + roll + " to see if the asteroid is a komet. presenceChance: " + presenceChance);
+            roll = UnityEngine.Random.Range(1, 10000);
+            Log("Rolled a " + roll + " to see if the asteroid is a komet. presenceChance: " + presenceChance);
 
             //If we roll high enough, then flip the asteroid into a komet.
-            if (roll >= (float)presenceChance)
+            if (roll <= (float)presenceChance)
             {
                 ConvertToKomet(asteroid);
             }
 
             else
             {
-                Debug.Log("[KometManager] - No komet.");
+                Log("No komet.");
             }
         }
 
@@ -123,16 +130,25 @@ namespace KerbalKomets
             asteroid.vesselName = "Kmt. " + ModuleKomet.CreateKometName(Planetarium.GetUniversalTime());
             if (asteroid.rootPart != null)
                 asteroid.rootPart.initialVesselName = asteroid.vesselName;
-            Debug.Log("[KometManager] - New komet " + asteroid.vesselName + " discovered!");
+            Log("New komet " + asteroid.vesselName + " discovered!");
 
             //Generate a random orbit for the komet.
             Orbit orbit = Orbit.CreateRandomOrbitAround(Planetarium.fetch.Sun, kometMinAltitude, kometMaxAltitude);
 
-            //Komets have eccentric orbits, let's randomize the eccentricity.
+            //Komets have eccentric orbits, let's randomize the eccentricity and such.
             orbit.eccentricity = UnityEngine.Random.Range(eccentricityMin, eccentricityMax);
 
+            //Initial komets are easier to reach..
+            if (!KerbalKometScenario.Instance.GetStartingKometsFlag())
+            {
+                orbit.inclination = UnityEngine.Random.Range(0, 90f);
+                orbit.LAN = UnityEngine.Random.Range(0, 360f);
+                orbit.argumentOfPeriapsis = UnityEngine.Random.Range(0, 360f);
+            }
+            double orbitTime = UnityEngine.Random.Range(0, (float)orbit.GetTimeToPeriapsis());
+
             //Set the orbit
-            asteroid.orbit.SetOrbit(orbit.inclination, orbit.eccentricity, orbit.semiMajorAxis, orbit.LAN, orbit.argumentOfPeriapsis, orbit.meanAnomalyAtEpoch, 0.0f, Planetarium.fetch.Sun);
+            asteroid.orbit.SetOrbit(orbit.inclination, orbit.eccentricity, orbit.semiMajorAxis, orbit.LAN, orbit.argumentOfPeriapsis, orbit.meanAnomalyAtEpoch, orbitTime, Planetarium.fetch.Sun);
 
             //Hack: Astroids appear to spawn unloaded, and they don't appear to have any part modules when they first show up. To get around this, register the komet in the komet registry.
             //When the asteroid comes into physics range, we'll flip it to a komet.
@@ -152,7 +168,7 @@ namespace KerbalKomets
         {
             try
             {
-                Debug.Log("[KometManager] - Generating press release");
+                Log("Generating press release");
                 StringBuilder resultsMessage = new StringBuilder();
                 MessageSystem.Message msg;
                 string[] kometNameItems = komet.vesselName.Split(new char[] { '/' });
@@ -173,7 +189,7 @@ namespace KerbalKomets
             }
             catch (Exception ex) 
             {
-                Debug.Log("[KometManager] - Oops: " + ex);
+                Log("Oops: " + ex);
             }
         }
 
@@ -195,7 +211,7 @@ namespace KerbalKomets
                     if (firstKometCreated)
                     {
                         roll = UnityEngine.Random.Range(1, 100);
-                        Debug.Log("[KometManager] - Creating starting komets: Rolled a " + roll + " out of 100. Target number is " + startingKometsChance);
+                        Log("Creating starting komets: Rolled a " + roll + " out of 100. Target number is " + startingKometsChance);
 
                         if (roll >= startingKometsChance)
                             ConvertToKomet(unloadedVessels[index]);
@@ -203,7 +219,7 @@ namespace KerbalKomets
 
                     else
                     {
-                        Debug.Log("[KometManager] - Creating guaranteed komet");
+                        Log("Creating guaranteed komet");
                         firstKometCreated = true;
 
                         ConvertToKomet(unloadedVessels[index]);

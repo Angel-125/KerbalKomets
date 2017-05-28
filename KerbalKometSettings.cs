@@ -26,16 +26,28 @@ namespace KerbalKomets
         [GameParameters.CustomParameterUI("Send press release when discovered", toolTip = "If enabled, you'll receive a press release when a komet is discovered.", autoPersistance = true)]
         public bool sendPressRelease = true;
 
-        [GameParameters.CustomIntParameterUI("Komet discovery chance", maxValue = 100, minValue = 1, stepSize = 1, toolTip = "How frequently will komets be discovered?", autoPersistance = true)]
+        [GameParameters.CustomIntParameterUI("Komet discovery chance", maxValue = 10000, minValue = 1, stepSize = 1, toolTip = "N out of 10000 chances to discover a komet.", autoPersistance = true)]
         public int presenceChance = 1;
 
+//        [GameParameters.CustomIntParameterUI("Max Komets", maxValue = 100, minValue = 1, stepSize = 1, toolTip = "Maximum number of komets allowed at any given time.", autoPersistance = true)]
+        public int maxKomets = 10;
+
         #region
+        public static int MaxKomets
+        {
+            get
+            {
+                KerbalKometSettings settings = HighLogic.CurrentGame.Parameters.CustomParams<KerbalKometSettings>();
+                return settings.maxKomets;
+            }
+        }
+
         public static int PresenceChance
         {
             get
             {
                 KerbalKometSettings settings = HighLogic.CurrentGame.Parameters.CustomParams<KerbalKometSettings>();
-                return 100 - settings.presenceChance;
+                return settings.presenceChance;
             }
         }
 
@@ -71,6 +83,15 @@ namespace KerbalKomets
         #endregion
 
         #region CustomParameterNode
+
+        public override string DisplaySection
+        {
+            get
+            {
+                return Section;
+            }
+        }
+
         public override string Section
         {
             get

@@ -9,6 +9,11 @@ Community Resource Pack is optional; if installed, your komets will have other r
 
 ---REVISION HISTORY---
 
+0.4.0
+- Updated to support KSP 1.3.
+- Randomized orbits a bit for new komets.
+- Each time asteroids spawn, there's a 1 in 10000 chance that the asteroid will become a komet. You can change the odds in Settings->Difficulty.
+
 0.3.5
 - Existing asteroids won't change shape when you install or uninstall the mod.
 NOTE: If you've installed Kerbal Komets before, and visited an asteroid/komet, then its size and shape will change, but that will be the last time it does so.
@@ -17,6 +22,10 @@ NOTE: If you've installed Kerbal Komets before, and visited an asteroid/komet, t
 - Komets now spawn with Kopernicus installed.
 - If you manually flip an asteroid to a komet, its orbit will remain unchanged.
 - Re-labeled the "Rename Asteroid" button to "Rename Komet" when the asteroid becomes a komet.
+
+0.3.0
+- Lowered default pressenceChance to discover komets to 1.
+- Randomized the position in the orbit of newly discovered komets.
 
 0.1.0
 - Initial release

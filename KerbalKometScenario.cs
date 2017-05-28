@@ -66,5 +66,10 @@ namespace KerbalKomets
             if (registeredKomets.Contains(kometName))
                 registeredKomets.Remove(kometName);
         }
+
+        public int GetKometCount()
+        {
+            return registeredKomets.Count;
+        }
     }
 }
