@@ -78,9 +78,6 @@ namespace KerbalKomets
             if (node.HasValue("kometMaxAltitude"))
                 double.TryParse(node.GetValue("kometMaxAltitude"), out kometMaxAltitude);
 
-            if (node.HasValue("startingKometsChance"))
-                int.TryParse(node.GetValue("startingKometsChance"), out startingKometsChance);
-
             createdStartingKomets();
         }
 
@@ -104,15 +101,15 @@ namespace KerbalKomets
             if (createdStartingKomets())
                 return;
             //Max komets reached
-//            if (KerbalKometScenario.Instance.GetKometCount() >= KerbalKometSettings.MaxKomets)
-//                return;
+            if (KerbalKometScenario.Instance.GetKometCount() >= KerbalKometSettings.MaxKomets)
+                return;
 
             int presenceChance = KerbalKometSettings.PresenceChance;
             float roll = 0.0f;
             roll = UnityEngine.Random.Range(1, 10000);
             Log("Rolled a " + roll + " to see if the asteroid is a komet. presenceChance: " + presenceChance);
 
-            //If we roll high enough, then flip the asteroid into a komet.
+            //If we roll low enough, then flip the asteroid into a komet.
             if (roll <= (float)presenceChance)
             {
                 ConvertToKomet(asteroid);

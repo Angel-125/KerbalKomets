@@ -26,13 +26,13 @@ namespace KerbalKomets
         [GameParameters.CustomParameterUI("Send press release when discovered", toolTip = "If enabled, you'll receive a press release when a komet is discovered.", autoPersistance = true)]
         public bool sendPressRelease = true;
 
-        [GameParameters.CustomIntParameterUI("Komet discovery chance", maxValue = 10000, minValue = 1, stepSize = 1, toolTip = "N out of 10000 chances to discover a komet.", autoPersistance = true)]
+        [GameParameters.CustomIntParameterUI("Komet discovery chance", maxValue = 10000, minValue = 1, stepSize = 1, toolTip = "N out of 10000 chances to discover a komet. The larger the number, the bigger the chance.", autoPersistance = true)]
         public int presenceChance = 1;
 
-//        [GameParameters.CustomIntParameterUI("Max Komets", maxValue = 100, minValue = 1, stepSize = 1, toolTip = "Maximum number of komets allowed at any given time.", autoPersistance = true)]
+        [GameParameters.CustomIntParameterUI("Max Komets", maxValue = 100, minValue = 1, stepSize = 1, toolTip = "Maximum number of komets allowed at any given time.", autoPersistance = true)]
         public int maxKomets = 10;
 
-        #region
+        #region Properties
         public static int MaxKomets
         {
             get

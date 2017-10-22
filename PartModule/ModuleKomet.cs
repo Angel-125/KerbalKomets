@@ -42,6 +42,9 @@ namespace KerbalKomets
         public string kometExperimentID = string.Empty;
 
         [KSPField]
+        public string waterResourceName = "GrayWater";
+
+        [KSPField]
         public float waterPercentage = 50f;
 
         [KSPField]
@@ -275,24 +278,32 @@ namespace KerbalKomets
             if (resourcesConverted)
                 return;
 
-            //Find the Ore, Water, and guaranteed resources (typically Organics, RareMetals, and ExoticMinerals)
-            //If Community Resource Pack isn't installed, that's ok, we'll just keep the Ore as is and exit.
+            //Find the Ore, water, and guaranteed resources (if any)
             ModuleAsteroidResource[] asteroidResources = this.part.FindModulesImplementing<ModuleAsteroidResource>().ToArray();
             ModuleAsteroidResource oreResource = null;
             ModuleAsteroidResource waterResource = null;
             List<ModuleAsteroidResource> extraResources = new List<ModuleAsteroidResource>();
+            PartResourceDefinitionList definitions = PartResourceLibrary.Instance.resourceDefinitions;
             for (int index = 0; index < asteroidResources.Length; index++)
             {
                 if (asteroidResources[index].resourceName == "Ore")
+                {
                     oreResource = asteroidResources[index];
-                else if (asteroidResources[index].resourceName == "Water")
-                    waterResource = asteroidResources[index];
-                
+                }
+                else if (asteroidResources[index].resourceName == waterResourceName)
+                {
+                    //Does definition exist?
+                    if (definitions.Contains(asteroidResources[index].resourceName))
+                        waterResource = asteroidResources[index];
+                }
+
                 //If the resource is guaranteed then add it to the guarantee list.
                 else if (string.IsNullOrEmpty(guaranteeResources) == false)
                 {
-                    if (guaranteeResources.Contains(asteroidResources[index].resourceName))
+                    if (guaranteeResources.Contains(asteroidResources[index].resourceName) && definitions.Contains(asteroidResources[index].resourceName))
+                    {
                         extraResources.Add(asteroidResources[index]);
+                    }
                 }
             }
             if (oreResource == null)

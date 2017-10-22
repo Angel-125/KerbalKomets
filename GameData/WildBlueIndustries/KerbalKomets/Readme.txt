@@ -9,6 +9,11 @@ Community Resource Pack is optional; if installed, your komets will have other r
 
 ---REVISION HISTORY---
 
+0.5.0
+- Updated to KSP 1.3.1.
+- Removed pressenceChance from the settings file; it's handled by the Settings->Difficulty screen.
+- Bug fixes.
+
 0.4.0
 - Updated to support KSP 1.3.
 - Randomized orbits a bit for new komets.

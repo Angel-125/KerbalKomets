@@ -5,10 +5,11 @@ C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\Assembly-CSharp.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\KSPAssets.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.UI.dll
-C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\TrackIRUnity.dll
+C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\KSPTrackIR.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\Mono.Cecil.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\TDx.TDxInput.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\Mono.Security.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.xml
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.pdb
+C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.csprojResolveAssemblyReference.cache

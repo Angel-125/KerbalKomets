@@ -59,11 +59,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KerbalKometScenario.cs" />
-    <Compile Include="KerbalKometSettings.cs" />
-    <Compile Include="KometManager.cs" />
-    <Compile Include="ModuleKomet.cs" />
+    <Compile Include="Settings\KerbalKometScenario.cs" />
+    <Compile Include="Settings\KerbalKometSettings.cs" />
+    <Compile Include="Managers\KometManager.cs" />
+    <Compile Include="PartModule\ModuleKomet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Window.cs" />
+    <Compile Include="Utils\WindowUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
