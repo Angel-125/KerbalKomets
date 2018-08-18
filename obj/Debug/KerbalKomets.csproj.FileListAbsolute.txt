@@ -9,6 +9,7 @@ C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\KSPTrackIR.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\Mono.Cecil.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\Ionic.Zip.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\TDx.TDxInput.dll
-C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\RedShellSDK.dll
+C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.csproj.CoreCompileInputs.cache
+C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.csproj.CopyComplete
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.pdb
