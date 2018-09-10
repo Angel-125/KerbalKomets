@@ -68,6 +68,19 @@
     <Compile Include="Utils\WindowUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"C:\Projects\KSP\WildBlueIndustries\pdb2mdb\pdb2mdb.exe" "$(TargetFileName)"
+xcopy /Y "$(TargetPath)" "C:\KSPDev\GameData\WildBlueIndustries\KerbalKomets\Plugins\"﻿
+xcopy /Y "$(TargetDir)$(TargetName).pdb" "C:\KSPDev\GameData\WildBlueIndustries\KerbalKomets\Plugins\"
+xcopy /Y "$(TargetDir)$(TargetName).dll.mdb" "C:\KSPDev\GameData\WildBlueIndustries\KerbalKomets\Plugins\"
+xcopy /Y "$(TargetDir)$(TargetName).dll" "C:\KSPDev\GameData\WildBlueIndustries\KerbalKomets\Plugins\"
+
+xcopy /Y  "C:\KSPDev\GameData\WildBlueIndustries\KerbalKomets\*.*" "C:\Projects\KSP\WildBlueIndustries\KerbalKomets\GameData\WildBlueIndustries\KerbalKomets\"
+xcopy /Y  "C:\KSPDev\GameData\WildBlueIndustries\kerbalKomets\KerbalKomets.version" "C:\Projects\KSP\WildBlueIndustries\KerbalKomets\Notes\"
+
+del "C:\Projects\KSP\WildBlueIndustries\KerbalKomets\GameData\WildBlueIndustries\KerbalKomets\MiniAVC.xml"
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
