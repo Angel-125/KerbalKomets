@@ -75,7 +75,6 @@ xcopy /Y "$(TargetDir)$(TargetName).pdb" "C:\KSPDev\GameData\WildBlueIndustries\
 xcopy /Y "$(TargetDir)$(TargetName).dll.mdb" "C:\KSPDev\GameData\WildBlueIndustries\KerbalKomets\Plugins\"
 xcopy /Y "$(TargetDir)$(TargetName).dll" "C:\KSPDev\GameData\WildBlueIndustries\KerbalKomets\Plugins\"
 
-xcopy /Y /E  "C:\KSPDev\GameData\WildBlueIndustries\KerbalKomets\*.*" "C:\Projects\KSP\WildBlueIndustries\KerbalKomets\GameData\WildBlueIndustries\KerbalKomets\"
 xcopy /Y  "C:\KSPDev\GameData\WildBlueIndustries\kerbalKomets\KerbalKomets.version" "C:\Projects\KSP\WildBlueIndustries\KerbalKomets\Notes\"
 
 del "C:\Projects\KSP\WildBlueIndustries\KerbalKomets\GameData\WildBlueIndustries\KerbalKomets\MiniAVC.xml"
