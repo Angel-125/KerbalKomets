@@ -9,6 +9,9 @@ Community Resource Pack is optional; if installed, your komets will have other r
 
 ---REVISION HISTORY---
 
+0.7.0
+- Updated to KSP 1.8
+
 0.6.2
 - Recompiled for KSP 1.6
 
