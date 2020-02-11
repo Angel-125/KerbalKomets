@@ -1,4 +1,3 @@
-C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.csproj.CoreCompileInputs.cache
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\KerbalKomets.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\KerbalKomets.pdb
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\Assembly-CSharp-firstpass.dll
@@ -6,7 +5,6 @@ C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\Assembly-CSharp.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\KSPAssets.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.AnimationModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.CoreModule.dll
-C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.ImageConversionModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.IMGUIModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.InputLegacyModule.dll
@@ -34,6 +32,9 @@ C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\TDx.TDxInput.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.Physics2DModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.UnityWebRequestAssetBundleModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.SharedInternalsModule.dll
+C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.JSONSerializeModule.dll
+C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.dll
+C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.XRModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.AccessibilityModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.AIModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.AndroidJNIModule.dll
@@ -41,7 +42,6 @@ C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.ClusterInp
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.DirectorModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.DSPGraphModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.GridModule.dll
-C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.JSONSerializeModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.LocalizationModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.SpriteMaskModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.SpriteShapeModule.dll
@@ -59,13 +59,12 @@ C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.GameCenter
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.InputModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.TextCoreModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.UNETModule.dll
-C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.XRModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.ARModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.ClusterRendererModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.CrashReportingModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\UnityEngine.PerformanceReportingModule.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\bin\Debug\KSPAssets.XmlSerializers.dll
+C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.csproj.CoreCompileInputs.cache
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.csproj.CopyComplete
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.dll
 C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.pdb
-C:\Projects\KSP\WildBlueIndustries\KerbalKomets\obj\Debug\KerbalKomets.csprojAssemblyReference.cache
